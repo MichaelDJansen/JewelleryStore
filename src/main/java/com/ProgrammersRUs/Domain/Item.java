@@ -11,18 +11,62 @@ public class Item {
     private double price;
     private int quantity_on_hand;
 
-     /*
-    public Supplier(Builder builder){}
+
+    public Item(Builder builder){
+        this.name = builder.name;
+        this.description = builder.description;
+        this.price = builder.price;
+        this.quantity_on_hand = builder.quantity_on_hand;
+    }
 
     public class Builder{
 
-        public Builder(){}
+        private Long id;
+        private String name;
+        private String description;
+        private double price;
+        private int quantity_on_hand;
 
-        public Builder copy(){}
+        public Builder(String name,String description,double price,int quantity_on_hand){
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.quantity_on_hand = quantity_on_hand;
+        }
 
-        public Supplier build(){}
+        public Builder name(String name){
+            this.name = name;
+            return this;
+        }
+
+        public Builder description(String description){
+            this.description = description;
+            return this;
+        }
+
+        public Builder price(float price){
+            this.price = price;
+            return this;
+        }
+
+        public Builder quantity_on_hand(int quantity_on_hand){
+            this.quantity_on_hand = quantity_on_hand;
+            return this;
+        }
+
+        public Builder copy(Item item){
+            this.name = item.name;
+            this.description = item.description;
+            this.price = item.price;
+            this.quantity_on_hand = item.quantity_on_hand;
+            return this;
+        }
+
+        public Item build(Builder builder){
+            return new Item(builder);
+        }
     }
-    */
+
 
     public Long getId() {
         return id;

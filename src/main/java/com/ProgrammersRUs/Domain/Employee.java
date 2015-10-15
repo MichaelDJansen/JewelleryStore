@@ -15,7 +15,11 @@ public class Employee {
     private float salary;
 
 
-    public Employee(Builder builder){}
+    public Employee(Builder builder){
+        this.name = builder.name;
+        this.address = builder.address;
+        this.salary = builder.salary;
+    }
 
     public class Builder{
 

@@ -14,7 +14,12 @@ public class Customer {
     private Address address;
 
 
-    public Customer(Builder builder){}
+    public Customer(Builder builder){
+        this.id = builder.id;
+        this.name = builder.name;
+        this.contactInformation = builder.contactInformation;
+        this.address = builder.address;
+    }
 
     public class Builder{
         private Long id;
@@ -22,7 +27,8 @@ public class Customer {
         private ContactInformation contactInformation;
         private Address address;
 
-        public Builder(){}
+        public Builder(){
+        }
 
         public Builder(Name name,ContactInformation contactInformation){
             this.name = name;
