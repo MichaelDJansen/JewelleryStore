@@ -17,7 +17,12 @@ public class Address {
 
 
 
-    public Address(Builder builder){}
+    public Address(Builder builder){
+        this.streetNumber = builder.streetNumber;
+        this.streetName = builder.streetName;
+        this.town = builder.town;
+        this.province = builder.province;
+        this.postalCode = builder.postalCode;}
 
     public class Builder{
 
@@ -63,15 +68,16 @@ public class Address {
         }
 
         public Builder copy(Address address){
-        this.streetNumber = address.streetNumber;
-        this.streetName = address.streetName;
-        this.town = address.town;
-        this.province = address.province;
-        this.postalCode = address.postalCode;
+            this.streetNumber = address.streetNumber;
+            this.streetName = address.streetName;
+            this.town = address.town;
+            this.province = address.province;
+            this.postalCode = address.postalCode;
+            return this;
         }
 
-        public Address build(){
-        return new Address(Builder);
+        public Address build(Builder builder){
+        return new Address(builder);
         }
     }
 

@@ -10,18 +10,50 @@ public class Customer {
     private ContactInformation contactInformation;
     private Address address;
 
-     /*
-    public Supplier(Builder builder){}
+
+    public Customer(Builder builder){}
 
     public class Builder{
+        private Long id;
+        private Name name;
+        private ContactInformation contactInformation;
+        private Address address;
 
         public Builder(){}
 
-        public Builder copy(){}
+        public Builder(Name name,ContactInformation contactInformation){
+            this.name = name;
+            this.contactInformation = contactInformation;
+        }
 
-        public Supplier build(){}
+        public Builder name(Name name){
+            this.name = name;
+            return this;
+        }
+
+        public Builder contactInformation(ContactInformation contactInformation){
+            this.contactInformation = contactInformation;
+            return this;
+        }
+
+        public Builder address(Address address){
+            this.address = address;
+            return this;
+        }
+
+        public Builder copy(Customer customer){
+            this.id = customer.id;
+            this.name = customer.name;
+            this.contactInformation = customer.contactInformation;
+            this.address = customer.address;
+            return this;
+        }
+
+        public Customer build(Builder builder){
+
+            return new Customer(builder);
+        }
     }
-    */
 
     public Long getId() {
         return id;
