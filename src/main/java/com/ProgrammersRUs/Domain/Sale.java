@@ -9,4 +9,26 @@ public class Sale {
 
     private Long transction_number;
     private Long orderId;
+
+     /*
+    public Supplier(Builder builder){}
+
+    public class Builder{
+
+        public Builder(){}
+
+        public Builder copy(){}
+
+        public Supplier build(){}
+    }
+    */
+
+
+    public Long getTransction_number() {
+        return transction_number;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
 }

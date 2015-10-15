@@ -9,4 +9,33 @@ public class Employee {
     private Name name;
     private Address address;
     private float salary;
+
+     /*
+    public Supplier(Builder builder){}
+
+    public class Builder{
+
+        public Builder(){}
+
+        public Builder copy(){}
+
+        public Supplier build(){}
+    }
+    */
+
+    public Long getId() {
+        return id;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
 }

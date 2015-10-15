@@ -10,4 +10,37 @@ public class Item {
     private String description;
     private double price;
     private int quantity_on_hand;
+
+     /*
+    public Supplier(Builder builder){}
+
+    public class Builder{
+
+        public Builder(){}
+
+        public Builder copy(){}
+
+        public Supplier build(){}
+    }
+    */
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity_on_hand() {
+        return quantity_on_hand;
+    }
 }

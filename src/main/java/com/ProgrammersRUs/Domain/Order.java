@@ -11,4 +11,28 @@ public class Order {
     private Long customerId;
     private Date orderDate;
 
+     /*
+    public Supplier(Builder builder){}
+
+    public class Builder{
+
+        public Builder(){}
+
+        public Builder copy(){}
+
+        public Supplier build(){}
+    }
+    */
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
 }
