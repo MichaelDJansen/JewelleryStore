@@ -1,8 +1,11 @@
 package com.ProgrammersRUs.Domain;
 
+import javax.persistence.Entity;
+
 /**
  * Created by Michael on 14/10/2015.
  */
+@Entity
 public class Customer {
 
     private Long id;
