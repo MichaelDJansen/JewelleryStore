@@ -8,18 +8,54 @@ public class Name {
     private String middleName;
     private String surname;
 
-     /*
-    public Supplier(Builder builder){}
+
+    public Name(Builder builder){
+        this.firstName = builder.firstName;
+        this.middleName = builder.middleName;
+        this.surname = builder.surname;
+    }
 
     public class Builder{
 
+        private String firstName;
+        private String middleName;
+        private String surname;
+
         public Builder(){}
 
-        public Builder copy(){}
+        public Builder(String firstName,String surname){
+            this.firstName = firstName;
+            this.surname = surname;
+        }
 
-        public Supplier build(){}
+        public Builder firstName(String firstName){
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder middleName(String middleName){
+            this.middleName = middleName;
+            return this;
+        }
+
+        public Builder surname(String surname){
+            this.surname = surname;
+            return this;
+        }
+
+
+        public Builder copy(Name name){
+            this.firstName = name.firstName;
+            this.middleName = name.middleName;
+            this.surname = name.surname;
+            return this;
+        }
+
+        public Name build(Builder builder){
+            return new Name(builder);
+        }
     }
-    */
+
 
     public String getFirstName() {
         return firstName;
