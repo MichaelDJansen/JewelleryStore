@@ -23,7 +23,7 @@ public class OrderLine {
         this.quantity = builder.quantity;
     }
 
-    public class Builder{
+    public static class Builder{
 
         private Long id;
         private Long orderId;
@@ -60,8 +60,8 @@ public class OrderLine {
             return this;
         }
 
-        public OrderLine build(Builder builder){
-            return new OrderLine(builder);
+        public OrderLine build() {
+            return new OrderLine(this);
         }
     }
 

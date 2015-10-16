@@ -21,7 +21,7 @@ public class Sale {
         this.orderId = builder.orderId;
     }
 
-    public class Builder{
+    public static class Builder{
 
         private Long transction_number;
         private Long orderId;
@@ -42,8 +42,8 @@ public class Sale {
             return this;
         }
 
-        public Sale build(Builder builder){
-            return new Sale(builder);
+        public Sale build(){
+            return new Sale(this);
         }
     }
 

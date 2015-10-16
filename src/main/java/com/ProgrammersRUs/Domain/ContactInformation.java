@@ -18,7 +18,7 @@ public class ContactInformation {
         telephone = builder.telephone;
     }
 
-    public class Builder{
+    public static class Builder{
 
         private String email;
         private String telephone;
@@ -53,9 +53,9 @@ public class ContactInformation {
             return this;
         }
 
-        public ContactInformation build(Builder builder){
+        public ContactInformation build(){
 
-            return new ContactInformation(builder);
+            return new ContactInformation(this);
         }
     }
 

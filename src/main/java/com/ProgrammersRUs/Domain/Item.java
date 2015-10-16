@@ -25,7 +25,7 @@ public class Item {
         this.quantity_on_hand = builder.quantity_on_hand;
     }
 
-    public class Builder{
+    public static class Builder{
 
         private Long id;
         private String name;
@@ -68,8 +68,8 @@ public class Item {
             return this;
         }
 
-        public Item build(Builder builder){
-            return new Item(builder);
+        public Item build(){
+            return new Item(this);
         }
     }
 

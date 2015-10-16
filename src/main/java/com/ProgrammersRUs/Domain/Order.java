@@ -17,9 +17,13 @@ public class Order {
     private Date orderDate;
 
 
-    public Order(Builder builder){}
+    public Order(Builder builder){
+        this.id = builder.id;
+        this.customerId = builder.customerId;
+        this.orderDate = builder.orderDate;
+    }
 
-    public class Builder{
+    public static class Builder{
 
         private Long id;
         private Long customerId;
@@ -50,8 +54,8 @@ public class Order {
             return this;
         }
 
-        public Order build(Builder builder){
-            return new Order(builder);
+        public Order build(){
+            return new Order(this);
         }
     }
 

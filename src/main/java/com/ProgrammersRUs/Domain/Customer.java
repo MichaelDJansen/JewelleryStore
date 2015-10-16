@@ -26,7 +26,7 @@ public class Customer {
         this.address = builder.address;
     }
 
-    public class Builder{
+    public static class Builder{
         private Long id;
         private Name name;
         private ContactInformation contactInformation;
@@ -63,9 +63,8 @@ public class Customer {
             return this;
         }
 
-        public Customer build(Builder builder){
-
-            return new Customer(builder);
+        public Customer build(){
+            return new Customer(this);
         }
     }
 

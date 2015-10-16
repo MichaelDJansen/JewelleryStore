@@ -26,7 +26,7 @@ public class Employee {
         this.salary = builder.salary;
     }
 
-    public class Builder{
+    public static class Builder{
 
         private Long id;
         private Name name;
@@ -64,8 +64,8 @@ public class Employee {
             return this;
         }
 
-        public Employee build(Builder builder){
-            return new Employee(builder);
+        public Employee build() {
+            return new Employee(this);
         }
     }
 

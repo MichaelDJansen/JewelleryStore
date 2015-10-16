@@ -15,7 +15,7 @@ public class Name {
         this.surname = builder.surname;
     }
 
-    public class Builder{
+    public static class Builder{
 
         private String firstName;
         private String middleName;
@@ -51,8 +51,8 @@ public class Name {
             return this;
         }
 
-        public Name build(Builder builder){
-            return new Name(builder);
+        public Name build(){
+            return new Name(this);
         }
     }
 

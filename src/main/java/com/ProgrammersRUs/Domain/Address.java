@@ -24,7 +24,7 @@ public class Address {
         this.province = builder.province;
         this.postalCode = builder.postalCode;}
 
-    public class Builder{
+    public static class Builder{
 
         private String streetNumber;
         private String streetName;
@@ -76,8 +76,8 @@ public class Address {
             return this;
         }
 
-        public Address build(Builder builder){
-        return new Address(builder);
+        public Address build(){
+        return new Address(this);
         }
     }
 

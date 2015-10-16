@@ -19,9 +19,14 @@ public class Supplier {
     private Supplier(){}
 
 
-    public Supplier(Builder builder){}
+    public Supplier(Builder builder){
+        this.id = builder.id;
+        this.supplierName = builder.supplierName;
+        this.itemId = builder.itemId;
+        this.type = builder.type;
+    }
 
-    public class Builder{
+    public static class Builder{
 
         private Long id;
         private String supplierName;
@@ -59,8 +64,8 @@ public class Supplier {
             return this;
         }
 
-        public Supplier build(Builder builder){
-            return new Supplier(builder);
+        public Supplier build(){
+            return new Supplier(this);
         }
     }
 
