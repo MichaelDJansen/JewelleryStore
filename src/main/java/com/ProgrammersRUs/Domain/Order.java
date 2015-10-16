@@ -11,18 +11,45 @@ public class Order {
     private Long customerId;
     private Date orderDate;
 
-     /*
-    public Supplier(Builder builder){}
+
+    public Order(Builder builder){}
 
     public class Builder{
 
+        private Long id;
+        private Long customerId;
+        private Date orderDate;
+
         public Builder(){}
 
-        public Builder copy(){}
+        public Builder(Long customerId,Date orderDate){
+            this.customerId = customerId;
+            this.orderDate = orderDate;
+        }
 
-        public Supplier build(){}
+        public Builder customerId(Long customerId){
+            this.customerId = customerId;
+            return this;
+        }
+
+        public Builder orderDate(Date orderDate){
+            this.orderDate = orderDate;
+            return this;
+        }
+
+
+        public Builder copy(Order order){
+            this.id = order.id;
+            this.customerId = order.customerId;
+            this.orderDate = order.orderDate;
+            return this;
+        }
+
+        public Order build(Builder builder){
+            return new Order(builder);
+        }
     }
-    */
+
 
     public Long getId() {
         return id;
