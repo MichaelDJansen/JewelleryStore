@@ -1,6 +1,9 @@
 package com.ProgrammersRUs.Domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by Michael on 14/10/2015.
@@ -9,6 +12,8 @@ import javax.persistence.Entity;
 @Entity
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Name name;
     private Address address;

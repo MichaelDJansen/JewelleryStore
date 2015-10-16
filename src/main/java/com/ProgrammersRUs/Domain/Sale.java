@@ -1,12 +1,17 @@
 package com.ProgrammersRUs.Domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by Michael on 14/10/2015.
  */
 public class Sale {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transction_number;
     private Long orderId;
 

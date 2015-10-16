@@ -1,10 +1,16 @@
 package com.ProgrammersRUs.Domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Michael on 14/10/2015.
  */
 public class OrderLine {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long orderId;
     private Long itemId;
