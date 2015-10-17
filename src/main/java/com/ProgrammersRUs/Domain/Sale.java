@@ -8,6 +8,7 @@ import javax.persistence.Id;
 /**
  * Created by Michael on 14/10/2015.
  */
+@Entity
 public class Sale {
 
     @Id

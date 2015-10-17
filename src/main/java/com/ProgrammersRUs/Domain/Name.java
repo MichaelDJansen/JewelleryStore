@@ -1,8 +1,11 @@
 package com.ProgrammersRUs.Domain;
 
+import javax.persistence.Embeddable;
+
 /**
  * Created by Michael on 14/10/2015.
  */
+@Embeddable
 public class Name {
     private String firstName;
     private String middleName;
