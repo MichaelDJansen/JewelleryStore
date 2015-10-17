@@ -11,6 +11,7 @@ public class ContactInformation {
     private String telephone;
     private String cellphone;
 
+    protected ContactInformation(){}
 
     public ContactInformation(Builder builder){
         email = builder.email;

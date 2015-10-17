@@ -19,6 +19,7 @@ public class Item {
     private double price;
     private int quantity_on_hand;
 
+    protected Item(){}
 
     public Item(Builder builder){
         this.name = builder.name;

@@ -18,6 +18,7 @@ public class OrderLine {
     private Long itemId;
     private int quantity;
 
+    protected OrderLine(){}
 
     public OrderLine(Builder builder){
         this.orderId = builder.orderId;

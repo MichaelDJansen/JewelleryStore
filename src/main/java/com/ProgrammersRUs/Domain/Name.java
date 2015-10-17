@@ -18,6 +18,8 @@ public class Name {
         this.surname = builder.surname;
     }
 
+    protected Name(){}
+
     public static class Builder{
 
         private String firstName;

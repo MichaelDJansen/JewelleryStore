@@ -2,6 +2,7 @@ package com.ProgrammersRUs.Factories;
 
 import com.ProgrammersRUs.Domain.Order;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,6 +29,10 @@ public class OrderFactoryTest {
     public void testCreation() throws Exception
     {
         order = new Order.Builder(customerId,orderDate).build();
+
+        Assert.assertNotNull(order);
+        Assert.assertEquals(customerId,order.getCustomerId());
+
     }
 
     @After

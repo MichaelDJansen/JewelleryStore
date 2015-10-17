@@ -18,8 +18,7 @@ public class Supplier {
     private Long itemId;
     private String type;
 
-    private Supplier(){}
-
+    protected Supplier(){}
 
     public Supplier(Builder builder){
         this.id = builder.id;

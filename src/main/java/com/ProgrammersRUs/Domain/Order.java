@@ -1,15 +1,13 @@
 package com.ProgrammersRUs.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Michael on 14/10/2015.
  */
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -18,6 +16,7 @@ public class Order {
     private Long customerId;
     private Date orderDate;
 
+    protected Order(){}
 
     public Order(Builder builder){
         this.id = builder.id;

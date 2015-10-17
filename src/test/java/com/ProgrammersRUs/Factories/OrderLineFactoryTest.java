@@ -19,11 +19,11 @@ public class OrderLineFactoryTest{
 
         @Before
         public void setUp() throws Exception
-                {
+        {
                 orderId = 554l;
                 itemId = 33l;
                 quantity = 4;
-                }
+        }
 
         @Test
         public void testCreation() throws Exception

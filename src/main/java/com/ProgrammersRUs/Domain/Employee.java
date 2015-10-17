@@ -19,6 +19,7 @@ public class Employee {
     private Address address;
     private float salary;
 
+    protected Employee(){}
 
     public Employee(Builder builder){
         this.name = builder.name;

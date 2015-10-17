@@ -15,7 +15,7 @@ public class Address {
     private String province;
     private String postalCode;
 
-
+    protected Address(){}
 
     public Address(Builder builder){
         this.streetNumber = builder.streetNumber;

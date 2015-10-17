@@ -16,6 +16,7 @@ public class Sale {
     private Long transction_number;
     private Long orderId;
 
+    protected Sale(){}
 
     public Sale(Builder builder){
         this.transction_number = builder.transction_number;

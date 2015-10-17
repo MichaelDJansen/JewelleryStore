@@ -18,6 +18,7 @@ public class Customer {
     private ContactInformation contactInformation;
     private Address address;
 
+    protected Customer(){}
 
     public Customer(Builder builder){
         this.id = builder.id;
