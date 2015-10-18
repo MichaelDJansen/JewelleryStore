@@ -6,12 +6,12 @@ import com.ProgrammersRUs.Domain.ContactInformation;
 import com.ProgrammersRUs.Domain.Customer;
 import com.ProgrammersRUs.Domain.Name;
 import com.ProgrammersRUs.Factories.CustomerFactory;
-import org.junit.AfterClass;
 import org.testng.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 /**
