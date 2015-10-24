@@ -5,7 +5,7 @@ import com.ProgrammersRUs.Domain.Sale;
 import java.util.List;
 
 /**
- * Created by Michael on 17/10/2015.
+ * Created by Braedy Thebus on 17/10/2015.
  */
 public interface SaleService {
 
