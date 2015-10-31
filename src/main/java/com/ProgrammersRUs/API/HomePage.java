@@ -14,7 +14,7 @@ public class HomePage {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String Index()
     {
-        return "Welcome to the home page of the Jewellery Store";
+        return "Welcome to the home page of the Jewellery Store.";
     }
 
 }
