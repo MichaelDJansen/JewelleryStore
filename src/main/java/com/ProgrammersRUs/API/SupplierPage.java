@@ -59,7 +59,7 @@ public class SupplierPage {
     }
 
     //GetSupplier
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "getSuppier/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public SupplierResource getSupplier(@PathVariable("id") Long id) {
         SupplierResource hateoas;
         Supplier supplier = service.getSupplier(id);
