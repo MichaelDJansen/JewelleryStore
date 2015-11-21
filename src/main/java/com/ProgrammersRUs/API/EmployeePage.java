@@ -47,7 +47,7 @@ public class EmployeePage {
                     .build();
 
             Link employeesLink = new
-                    Link("http://localhost:8081/employee/all")
+                    Link("http://localhost:8080/employee/all")
                     .withRel("employee");
 
             res.add(employeesLink);
@@ -69,7 +69,7 @@ public class EmployeePage {
                 .build();
 
             Link employeesLink = new
-                    Link("http://localhost:8081/employee/" + id.toString())
+                    Link("http://localhost:8080/employee/" + id.toString())
                     .withRel("employee");
 
             res.add(employeesLink);
@@ -93,7 +93,7 @@ public class EmployeePage {
                     .build();
 
             Link employeesLink = new
-                    Link("http://localhost:8081/employee/surname" + surname)
+                    Link("http://localhost:8080/employee/surname" + surname)
                     .withRel("employee");
 
             res.add(employeesLink);

@@ -48,7 +48,7 @@ public class SupplierPage {
                     .build();
 
             Link suppliersLink = new
-                    Link("http://localhost:8081/supplier/all")
+                    Link("http://localhost:8080/supplier/all")
                     .withRel("supplier");
 
             res.add(suppliersLink);
@@ -73,7 +73,7 @@ public class SupplierPage {
 
 
         Link suppliersLink = new
-                Link("http://localhost:8081/supplier/" + id.toString())
+                Link("http://localhost:8080/supplier/" + id.toString())
                 .withRel("supplier");
 
         res.add(suppliersLink);
@@ -100,7 +100,7 @@ public class SupplierPage {
                     .build();
 
             Link suppliersLink = new
-                    Link("http://localhost:8081/supplier/type/" + type)
+                    Link("http://localhost:8080/supplier/type/" + type)
                     .withRel("supplier");
 
             res.add(suppliersLink);
@@ -125,7 +125,7 @@ public class SupplierPage {
 
 
         Link suppliersLink = new
-                Link("http://localhost:8081/supplier/name/" + name)
+                Link("http://localhost:8080/supplier/name/" + name)
                 .withRel("supplier");
 
         res.add(suppliersLink);
@@ -150,7 +150,7 @@ public class SupplierPage {
 
 
         Link suppliersLink = new
-                Link("http://localhost:8081/supplier/itemId/" + id.toString())
+                Link("http://localhost:8080/supplier/itemId/" + id.toString())
                 .withRel("supplier");
 
         res.add(suppliersLink);

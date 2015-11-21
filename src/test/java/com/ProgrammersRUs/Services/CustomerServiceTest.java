@@ -41,6 +41,8 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
     private Name name;
     private ContactInformation contactInformation;
     private Address address;
+    private String username;
+    private String password;
 
     @Test
     public void create() throws Exception
@@ -49,8 +51,10 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
         name = new Name.Builder("Michael","Jansen").build();
         contactInformation = new ContactInformation.Builder("0735589465","KarryHelgen@hotmail.com").build();
         address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
+        username = "Mike435";
+        password = "Iam_Mike";
 
-        customer = CustomerFactory.createCustomer(name, contactInformation, address);
+        customer = CustomerFactory.createCustomer(name, contactInformation, address, username, password);
 
         Assert.assertNotNull(customer);
         Assert.assertEquals("0735589465",customer.getContactInformation().getCellphone());

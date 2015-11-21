@@ -9,8 +9,8 @@ import com.ProgrammersRUs.Domain.Name;
  * Created by Michael on 16/10/2015.
  */
 public class CustomerFactory {
-    public static Customer createCustomer(Name name,ContactInformation contactInformation,Address address){
-        Customer customer = new Customer.Builder(name,contactInformation).address(address).build();
+    public static Customer createCustomer(Name name,ContactInformation contactInformation,Address address, String username, String password){
+        Customer customer = new Customer.Builder(name,contactInformation).address(address).username(username).password(password).build();
         return customer;
     }
 }

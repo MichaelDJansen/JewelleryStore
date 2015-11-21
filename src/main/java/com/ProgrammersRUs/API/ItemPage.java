@@ -48,7 +48,7 @@ public class ItemPage {
                     .build();
 
             Link itemsLink = new
-                    Link("http://localhost:8081/item/all")
+                    Link("http://localhost:8080/item/all")
                     .withRel("item");
 
             res.add(itemsLink);
@@ -70,7 +70,7 @@ public class ItemPage {
                 .build();
 
         Link itemsLink = new
-                Link("http://localhost:8081/item/" + id.toString())
+                Link("http://localhost:8080/item/" + id.toString())
                 .withRel("item");
 
         res.add(itemsLink);
@@ -93,7 +93,7 @@ public class ItemPage {
                 .build();
 
         Link itemsLink = new
-                Link("http://localhost:8081/item/" + name)
+                Link("http://localhost:8080/item/" + name)
                 .withRel("item");
 
         res.add(itemsLink);
@@ -118,7 +118,7 @@ public class ItemPage {
                     .build();
 
             Link itemsLink = new
-                    Link("http://localhost:8081/item/OutOfStock/")
+                    Link("http://localhost:8080/item/OutOfStock/")
                     .withRel("item");
 
             res.add(itemsLink);

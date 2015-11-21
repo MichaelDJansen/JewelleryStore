@@ -47,7 +47,7 @@ public class OrderLinePage {
                     .build();
 
             Link orderLinesLink = new
-                    Link("http://localhost:8081/orderLine/all")
+                    Link("http://localhost:8080/orderLine/all")
                     .withRel("orderLine");
 
             res.add(orderLinesLink);
@@ -71,7 +71,7 @@ public class OrderLinePage {
                 .build();
 
         Link orderLinesLink = new
-                Link("http://localhost:8081/orderLine/" + id.toString())
+                Link("http://localhost:8080/orderLine/" + id.toString())
                 .withRel("orderLine");
 
         res.add(orderLinesLink);
@@ -98,7 +98,7 @@ public class OrderLinePage {
                     .build();
 
             Link orderLinesLink = new
-                    Link("http://localhost:8081/orderLine/details/" + orderId.toString())
+                    Link("http://localhost:8080/orderLine/details/" + orderId.toString())
                     .withRel("orderLine");
 
             res.add(orderLinesLink);

@@ -49,7 +49,7 @@ public class CustomerPage {
                         .build();
 
                 Link customersLink = new
-                        Link("http://localhost:8081/customer/all")
+                        Link("http://localhost:8080/customer/all")
                         .withRel("customer");
 
                 res.add(customersLink);
@@ -73,7 +73,7 @@ public class CustomerPage {
                     .build();
 
             Link customersLink = new
-                    Link("http://localhost:8081/customer/" + id.toString())
+                    Link("http://localhost:8080/customer/" + id.toString())
                     .withRel("customer");
 
             res.add(customersLink);
@@ -99,7 +99,7 @@ public class CustomerPage {
                     .build();
 
             Link customersLink = new
-                    Link("http://localhost:8081/customer/province/" + province)
+                    Link("http://localhost:8080/customer/province/" + province)
                     .withRel("customer");
 
             res.add(customersLink);
@@ -123,7 +123,7 @@ public class CustomerPage {
                 .build();
 
         Link customersLink = new
-                Link("http://localhost:8081/customer/cellphone/" + cellphone)
+                Link("http://localhost:8080/customer/cellphone/" + cellphone)
                 .withRel("customer");
 
         res.add(customersLink);
@@ -148,7 +148,7 @@ public class CustomerPage {
                     .build();
 
             Link customersLink = new
-                    Link("http://localhost:8081/customer/surname/" + surname)
+                    Link("http://localhost:8080/customer/surname/" + surname)
                     .withRel("customer");
 
             res.add(customersLink);

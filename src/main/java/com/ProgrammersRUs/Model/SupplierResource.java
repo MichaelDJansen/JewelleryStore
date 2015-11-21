@@ -5,6 +5,7 @@ import org.springframework.hateoas.ResourceSupport;
 /**
  * Created by yusraAdmin on 10/29/2015.
  */
+
 public class SupplierResource extends ResourceSupport {
 
     private Long id;
