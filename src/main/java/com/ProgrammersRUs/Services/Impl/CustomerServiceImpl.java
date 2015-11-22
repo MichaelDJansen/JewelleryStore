@@ -18,6 +18,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository repository;
 
+    @Override
     public List<Customer> getCustomers(){
         List<Customer> allCustomers = new ArrayList<Customer>();
 
@@ -31,11 +32,30 @@ public class CustomerServiceImpl implements CustomerService {
         return allCustomers;
     }
 
+    @Override
     public Customer getCustomer(Long id){
 
         Customer customer = repository.findOne(id);
 
         return customer;
+    }
+
+    @Override
+    public Customer createCustomer(Customer customer)
+    {
+        return repository.save(customer);
+    }
+
+    @Override
+    public Customer editCustomer(Customer customer)
+    {
+        return repository.save(customer);
+    }
+
+    @Override
+    public void deleteCustomer(Customer customer)
+    {
+        repository.delete(customer);
     }
 
     public List<Customer> customersInSameProvince(String province){

@@ -13,6 +13,12 @@ public interface CustomerService {
 
     public Customer getCustomer(Long id);
 
+    public Customer createCustomer(Customer customer);
+
+    public Customer editCustomer(Customer customer);
+
+    public void deleteCustomer(Customer customer);
+
     public List<Customer> customersInSameProvince(String province);
 
     public Customer findByCellphoneNumber(String cellphone);
