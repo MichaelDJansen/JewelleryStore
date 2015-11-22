@@ -18,6 +18,7 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemRepository repository;
 
+    @Override
     public List<Item> getItems(){
 
         List<Item> allItems = new ArrayList<Item>();
@@ -32,11 +33,30 @@ public class ItemServiceImpl implements ItemService {
 
     }
 
+    @Override
     public Item getItem(Long Id){
 
         Item item = repository.findOne(Id);
 
         return item;
+    }
+
+    @Override
+    public Item createItem(Item item)
+    {
+        return repository.save(item);
+    }
+
+    @Override
+    public Item editItem(Item item)
+    {
+        return repository.save(item);
+    }
+
+    @Override
+    public void deleteItem(Item item)
+    {
+        repository.delete(item);
     }
 
     public Item findItemByName(String name){

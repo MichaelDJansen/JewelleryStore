@@ -182,7 +182,6 @@ public class CustomerPage {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/all").buildAndExpand(customer.getId()).toUri());
-        System.out.println("Customers page = ResponeEntity = Create customer");
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 
     }

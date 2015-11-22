@@ -13,6 +13,12 @@ public interface ItemService {
 
     Item getItem(Long Id);
 
+    Item createItem(Item item);
+
+    Item editItem(Item item);
+
+    void deleteItem(Item item);
+
     Item findItemByName(String name);
 
     List<Item> findOutOfStockItems();
