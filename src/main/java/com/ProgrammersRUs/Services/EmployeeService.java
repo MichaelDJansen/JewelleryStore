@@ -13,6 +13,12 @@ public interface EmployeeService {
 
     Employee getEmployee(Long id);
 
+    Employee createEmployee(Employee employee);
+
+    Employee editEmployee(Employee employee);
+
+    void deleteEmployee(Employee employee);
+
     List<Employee> findEmployeeBySurname(String surname);
 
 }

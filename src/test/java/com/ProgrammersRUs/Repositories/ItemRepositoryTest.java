@@ -54,7 +54,7 @@ public class ItemRepositoryTest  extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(id, item.getId());
     }
 
-    @Test(dependsOnMethods = "create")
+    /*@Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
         item = repository.findOne(id);
@@ -87,7 +87,7 @@ public class ItemRepositoryTest  extends AbstractTestNGSpringContextTests {
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }
+    }*/
 
 
 }

@@ -36,21 +36,21 @@ public class EmployeeServiceTest extends AbstractTestNGSpringContextTests {
     List<Employee> employees = new ArrayList<>();
 
     private Name name;
-    private Address address;
-    private float salary;
+    private String username;
+    private String password;
 
     @Test
     public void create() throws Exception
     {
 
         name = new Name.Builder("Catherine","Great").middleName("the").build();
-        address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
-        salary = 30000.00f;
+        username = "Mike101";
+        password = "123456";
 
-        employee = new Employee.Builder(name,address,salary).build();
+        employee = new Employee.Builder(name,username, password).build();
 
         Assert.assertNotNull(employee);
-        Assert.assertEquals(address.getStreetName(),employee.getAddress().getStreetName());
+        Assert.assertEquals(username, employee.getUsername());
 
         repository.save(employee);
         id = employee.getId();
@@ -82,9 +82,9 @@ public class EmployeeServiceTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(1, employees.size());
     }
 
-    @AfterClass
+   /* @AfterClass
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }
+    }*/
 }

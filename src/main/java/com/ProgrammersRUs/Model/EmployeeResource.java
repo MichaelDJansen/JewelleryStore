@@ -11,30 +11,30 @@ public class EmployeeResource extends ResourceSupport {
 
     private Long id;
     private Name name;
-    private Address address;
-    private float salary;
+    private String username;
+    private String password;
 
     protected EmployeeResource(){}
 
     public EmployeeResource(Builder builder){
         this.name = builder.name;
-        this.address = builder.address;
-        this.salary = builder.salary;
+        this.username = builder.username;
+        this.password = builder.password;;
     }
 
     public static class Builder{
 
         private Long id;
         private Name name;
-        private Address address;
-        private float salary;
+        private String username;
+        private String password;
 
         public Builder(){}
 
         public Builder(Name name,Address address,float salary){
             this.name = name;
-            this.address = address;
-            this.salary = salary;
+            this.username = username;
+            this.password = password;
         }
 
         public Builder name(Name name){
@@ -42,13 +42,15 @@ public class EmployeeResource extends ResourceSupport {
             return this;
         }
 
-        public Builder address(Address address){
-            this.address = address;
+        public Builder username(String username)
+        {
+            this.username = username;
             return this;
         }
 
-        public Builder salary(float salary){
-            this.salary = salary;
+        public Builder password(String password)
+        {
+            this.password = password;
             return this;
         }
 
@@ -60,8 +62,8 @@ public class EmployeeResource extends ResourceSupport {
         public Builder copy(EmployeeResource employee){
             this.id = employee.id;
             this.name = employee.name;
-            this.address = employee.address;
-            this.salary = employee.salary;
+            this.username = employee.username;
+            this.password = employee.password;
             return this;
         }
 
@@ -79,12 +81,12 @@ public class EmployeeResource extends ResourceSupport {
         return name;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getUsername() {
+        return username;
     }
 
-    public float getSalary() {
-        return salary;
+    public String getPassword() {
+        return password;
     }
 
 }

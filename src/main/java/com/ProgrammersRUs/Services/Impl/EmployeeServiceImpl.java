@@ -39,6 +39,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+    @Override
+    public Employee createEmployee(Employee employee)
+    {
+        return repository.save(employee);
+    }
+
+    @Override
+    public Employee editEmployee(Employee employee)
+    {
+        return repository.save(employee);
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee)
+    {
+        repository.delete(employee);
+    }
     public List<Employee> findEmployeeBySurname(String surname){
 
         List<Employee> matchedEmployees = new ArrayList<Employee>();

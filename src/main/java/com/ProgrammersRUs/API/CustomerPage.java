@@ -26,13 +26,6 @@ public class CustomerPage {
     @Autowired
     CustomerService service;
 
-   // @RequestMapping(value = "/index", method = RequestMethod.GET)
-   /* public String Index()
-    {
-        return "View Customers";
-    }*/
-
-    //Get Customers
     @RequestMapping(value = "/all/", method = RequestMethod.GET)
     public ResponseEntity<List<Customer>> getCustomers()
     {
@@ -79,25 +72,7 @@ public class CustomerPage {
         }
 
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
-        /*CustomerResource hateoas;
-        Customer customer = service.getCustomer(id);
 
-            CustomerResource res = new CustomerResource.Builder(
-                    customer.getName()
-                    ,customer.getContactInformation())
-                    .address(customer.getAddress())
-                    .id(customer.getId())
-                    .build();
-
-            Link customersLink = new
-                    Link("http://localhost:8080/customer/" + id.toString())
-                    .withRel("customer");
-
-            res.add(customersLink);
-            hateoas = res;
-
-
-        return hateoas;*/
     }
 
     //GetByProvince
@@ -187,21 +162,21 @@ public class CustomerPage {
     }
 
     @RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer Customer) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customer) {
 
-        Customer cust = service.getCustomer(id);
+        //Customer cust = service.getCustomer(id);
 
-        if (cust==null) {
+        if (customer==null) {
             return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
         }
 
-        Customer newCustomer = new Customer.Builder(cust.getName(),cust.getContactInformation()).address(cust.getAddress()).build();
+        Customer newCustomer = new Customer.Builder(customer.getName(),customer.getContactInformation()).address(customer.getAddress()).build();
         service.editCustomer(newCustomer);
         return new ResponseEntity<Customer>(newCustomer, HttpStatus.OK);
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") long id, @RequestBody Customer cus) {
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") long id, @RequestBody Customer cust) {
 
         Customer customer = service.getCustomer(id);
 

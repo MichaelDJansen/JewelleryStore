@@ -25,13 +25,6 @@ public class ItemPage {
     @Autowired
     ItemService service;
 
-   /* @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String Index()
-    {
-        return "View Items";
-    }*/
-
-    //Get Items
     @RequestMapping(value = "/all/", method = RequestMethod.GET)
     public ResponseEntity<List<Item>> getItems()
     {
@@ -44,24 +37,6 @@ public class ItemPage {
         }
 
         return new ResponseEntity<List<Item>>(itemList, HttpStatus.OK);
-
-        /*for(Item item: items)
-        {
-            ItemResource res = new ItemResource.Builder(item.getName(),
-                    item.getDescription()
-                    ,item.getPrice()
-                    ,item.getQuantity_on_hand())
-                    .build();
-
-            Link itemsLink = new
-                    Link("http://localhost:8080/item/all")
-                    .withRel("item");
-
-            res.add(itemsLink);
-            hateoas.add(res);
-        }
-
-        return hateoas;*/
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -75,22 +50,6 @@ public class ItemPage {
         }
 
         return new ResponseEntity<Item>(item, HttpStatus.OK);
-
-        /*ItemResource res = new ItemResource.Builder(item.getName(),
-                item.getDescription()
-                ,item.getPrice()
-                ,item.getQuantity_on_hand())
-                .build();
-
-        Link itemsLink = new
-                Link("http://localhost:8080/item/" + id.toString())
-                .withRel("item");
-
-        res.add(itemsLink);
-        hateoas = res;
-
-
-        return hateoas;*/
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
@@ -107,19 +66,16 @@ public class ItemPage {
     @RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Item> updateItem(@PathVariable("id") long id, @RequestBody Item item) {
 
-        Item item1 = service.getItem(id);
+        if (item ==null) {
 
-        if (item1 ==null) {
             return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
         }
-
-        Item newItem = new Item.Builder(item1.getName(), item1.getDescription(),item1.getPrice(), item1.getQuantity_on_hand()).build();
-        service.editItem(newItem);
-        return new ResponseEntity<Item>(newItem, HttpStatus.OK);
+        service.editItem(item);
+        return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "delete/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Item> deleteItem(@PathVariable("id") long id, @RequestBody Item item) {
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Item> deleteItem(@PathVariable("id") long id) {
 
         Item item1 = service.getItem(id);
 
@@ -127,55 +83,7 @@ public class ItemPage {
             return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
         }
 
-        service.deleteItem(item);
+        service.deleteItem(item1);
         return new ResponseEntity<Item>(HttpStatus.OK);
     }
-
-    //FindItemByName
-    /*@RequestMapping(value = "/name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ItemResource getItemByCellNumber(@PathVariable("name") String name) {
-        ItemResource hateoas;
-        Item item = service.findItemByName(name);
-
-        ItemResource res = new ItemResource.Builder(item.getName(),
-                item.getDescription()
-                ,item.getPrice()
-                ,item.getQuantity_on_hand())
-                .build();
-
-        Link itemsLink = new
-                Link("http://localhost:8080/item/" + name)
-                .withRel("item");
-
-        res.add(itemsLink);
-        hateoas = res;
-
-
-        return hateoas;
-    }
-
-    @RequestMapping(value = "/OutOfStock/", method = RequestMethod.GET)
-    public List<ItemResource> getOutOfStockItems()
-    {
-        List<ItemResource> hateoas = new ArrayList<ItemResource>();
-        List<Item> items = service.findOutOfStockItems();
-
-        for(Item item: items)
-        {
-            ItemResource res = new ItemResource.Builder(item.getName(),
-                    item.getDescription()
-                    ,item.getPrice()
-                    ,item.getQuantity_on_hand())
-                    .build();
-
-            Link itemsLink = new
-                    Link("http://localhost:8080/item/OutOfStock/")
-                    .withRel("item");
-
-            res.add(itemsLink);
-            hateoas.add(res);
-        }
-
-        return hateoas;
-    }*/
 }
