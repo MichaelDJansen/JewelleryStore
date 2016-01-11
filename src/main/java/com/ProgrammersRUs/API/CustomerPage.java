@@ -26,7 +26,7 @@ public class CustomerPage {
     @Autowired
     CustomerService service;
 
-    @RequestMapping(value = "/all/", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Customer>> getCustomers()
     {
         List<Customer> customerList = service.getCustomers();
@@ -37,27 +37,6 @@ public class CustomerPage {
         }
 
         return new ResponseEntity<List<Customer>>(customerList,HttpStatus.OK);
-        /*List<CustomerResource> hateoas = new ArrayList<CustomerResource>();
-        List<Customer> ustomers = service.getCustomers();
-
-        for(Customer customer: customers)
-        {
-                CustomerResource res = new CustomerResource.Builder(
-                         customer.getName()
-                        ,customer.getContactInformation())
-                        .address(customer.getAddress())
-                        .id(customer.getId())
-                        .build();
-
-                Link customersLink = new
-                        Link("http://localhost:8080/customer/all")
-                        .withRel("customer");
-
-                res.add(customersLink);
-                hateoas.add(res);
-        }
-
-        return hateoas;*/
     }
 
     //GetCustomer
@@ -125,30 +104,51 @@ public class CustomerPage {
         return hateoas;
     }*/
 
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> getCustomersByName(@PathVariable("name") String name) {
+        List<Customer> customers = service.findByName(name);
+
+        List<Customer> CustomerList= service.findByName(name);
+
+        if(CustomerList.isEmpty())
+        {
+            return new ResponseEntity<List<Customer>>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<Customer>>(CustomerList, HttpStatus.OK);
+
+    }
+
     //CustomersBySurname
-    /*@RequestMapping(value = "/surname/{surname}", method = RequestMethod.GET)
-    public List<CustomerResource> getCustomersBySurname(@PathVariable("surname") String surname) {
-        List<CustomerResource> hateoas = new ArrayList<CustomerResource>();
+    @RequestMapping(value = "/surname/{surname}", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> getCustomersBySurname(@PathVariable("surname") String surname) {
         List<Customer> customers = service.findBySurname(surname);
 
-        for (Customer customer : customers) {
-            CustomerResource res = new CustomerResource.Builder(
-                    customer.getName()
-                    , customer.getContactInformation())
-                    .address(customer.getAddress())
-                    .id(customer.getId())
-                    .build();
+        List<Customer> CustomerList= service.findBySurname(surname);
 
-            Link customersLink = new
-                    Link("http://localhost:8080/customer/surname/" + surname)
-                    .withRel("customer");
-
-            res.add(customersLink);
-            hateoas.add(res);
-
+        if(CustomerList.isEmpty())
+        {
+            return new ResponseEntity<List<Customer>>(HttpStatus.NOT_FOUND);
         }
-        return hateoas;
-    }*/
+
+        return new ResponseEntity<List<Customer>>(CustomerList, HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/company/{company}", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> getCustomersByCompany(@PathVariable("company") String company) {
+        List<Customer> customers = service.findByCompany(company);
+
+        List<Customer> CustomerList= service.findByCompany(company);
+
+        if(CustomerList.isEmpty())
+        {
+            return new ResponseEntity<List<Customer>>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<Customer>>(CustomerList, HttpStatus.OK);
+
+    }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
     public ResponseEntity<Void> createCustomer(@RequestBody Customer customer, UriComponentsBuilder ucBuilder)

@@ -21,8 +21,10 @@ public interface CustomerService {
 
     public List<Customer> customersInSameProvince(String province);
 
-    public Customer findByCellphoneNumber(String cellphone);
-
     public List<Customer> findBySurname(String surname);
+
+    public List<Customer> findByName(String name);
+
+    public List<Customer> findByCompany(String company);
 
 }

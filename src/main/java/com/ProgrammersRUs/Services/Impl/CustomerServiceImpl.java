@@ -58,6 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
         repository.delete(customer);
     }
 
+    @Override
     public List<Customer> customersInSameProvince(String province){
 
         List<Customer> matchedCustomers = new ArrayList<Customer>();
@@ -74,22 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
         return matchedCustomers;
     }
 
-    public Customer findByCellphoneNumber(String cellphone){
-        Customer foundCustomer = null;
-
-        Iterable<Customer> allCustomers = repository.findAll();
-        for(Customer customer: allCustomers)
-        {
-            if(customer.getContactInformation().getCellphone().equalsIgnoreCase(cellphone))
-            {
-                foundCustomer = customer;
-                break;
-            }
-        }
-
-        return foundCustomer;
-    }
-
+    @Override
     public List<Customer> findBySurname(String surname){
 
         List<Customer> matchedCustomers = new ArrayList<Customer>();
@@ -98,6 +84,40 @@ public class CustomerServiceImpl implements CustomerService {
         for(Customer customer: allCustomers)
         {
             if(customer.getName().getSurname().equalsIgnoreCase(surname))
+            {
+                matchedCustomers.add(customer);
+            }
+        }
+
+        return matchedCustomers;
+    }
+
+    @Override
+    public List<Customer> findByName(String name)
+    {
+        List<Customer> matchedCustomers = new ArrayList<Customer>();
+
+        Iterable<Customer> allCustomers = repository.findAll();
+        for(Customer customer: allCustomers)
+        {
+            if(customer.getName().getFirstName().equalsIgnoreCase(name))
+            {
+                matchedCustomers.add(customer);
+            }
+        }
+
+        return matchedCustomers;
+    }
+
+    @Override
+    public List<Customer> findByCompany(String company)
+    {
+        List<Customer> matchedCustomers = new ArrayList<Customer>();
+
+        Iterable<Customer> allCustomers = repository.findAll();
+        for(Customer customer: allCustomers)
+        {
+            if(customer.getCompanyName().equalsIgnoreCase(company))
             {
                 matchedCustomers.add(customer);
             }

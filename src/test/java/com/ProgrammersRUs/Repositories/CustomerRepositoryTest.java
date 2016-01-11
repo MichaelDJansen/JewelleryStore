@@ -30,6 +30,7 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
     Customer customer;
 
     private Name name;
+    private String companyName;
     private ContactInformation contactInformation;
     private Address address;
     private String username;
@@ -40,12 +41,13 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
     {
 
         name = new Name.Builder("Michael","Jansen").build();
+        companyName = "ABC Corp.";
         contactInformation = new ContactInformation.Builder("0735589465","KarryHelgen@hotmail.com").build();
         address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
         username = "Mike435";
         password = "Iam_Mike";
 
-        customer = CustomerFactory.createCustomer(name, contactInformation, address, username, password);
+        customer = CustomerFactory.createCustomer(name, companyName, contactInformation, address, username, password);
 
         Assert.assertNotNull(customer);
         Assert.assertEquals("0735589465",customer.getContactInformation().getCellphone());
@@ -69,7 +71,7 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
     {
         address = new Address.Builder("53","March Street","Cape Town","Western Cape","8001").build();
 
-        Customer newCustomer = CustomerFactory.createCustomer(name, contactInformation, address, username, password);
+        Customer newCustomer = CustomerFactory.createCustomer(name, companyName, contactInformation, address, username, password);
 
         repository.save(newCustomer);
         id = newCustomer.getId();

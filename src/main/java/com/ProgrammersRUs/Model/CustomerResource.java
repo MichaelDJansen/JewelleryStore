@@ -12,29 +12,27 @@ public class CustomerResource extends ResourceSupport {
 
     private Long id;
     private Name name;
+    private String companyName;
     private ContactInformation contactInformation;
     private Address address;
-    private String username;
-    private String password;
 
     protected CustomerResource(){}
 
     public CustomerResource(Builder builder){
         this.id = builder.id;
         this.name = builder.name;
+        this.companyName = builder.companyName;
         this.contactInformation = builder.contactInformation;
         this.address = builder.address;
-        this.username = builder.username;
-        this.password = builder.password;
+
     }
 
     public static class Builder{
         private Long id;
         private Name name;
+        private String companyName;
         private ContactInformation contactInformation;
         private Address address;
-        private String username;
-        private String password;
 
         public Builder(){
         }
@@ -46,6 +44,12 @@ public class CustomerResource extends ResourceSupport {
 
         public Builder name(Name name){
             this.name = name;
+            return this;
+        }
+
+        public Builder companyName(String companyName)
+        {
+            this.companyName = companyName;
             return this;
         }
 
@@ -64,26 +68,12 @@ public class CustomerResource extends ResourceSupport {
             return this;
         }
 
-
-        public Builder username(String username)
-        {
-            this.username = username;
-            return this;
-        }
-
-        public Builder password(String password)
-        {
-            this.password = password;
-            return this;
-        }
-
         public Builder copy(CustomerResource customer){
             this.id = customer.id;
             this.name = customer.name;
             this.contactInformation = customer.contactInformation;
             this.address = customer.address;
-            this.username = customer.username;
-            this.password = customer.password;
+            this.companyName = customer.companyName;
             return this;
         }
 
@@ -108,12 +98,7 @@ public class CustomerResource extends ResourceSupport {
         return address;
     }
 
-    public String getUsername() {
-        return username;
+    public String getCompanyName() {
+        return companyName;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
 }
