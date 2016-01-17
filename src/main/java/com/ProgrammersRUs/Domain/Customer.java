@@ -15,25 +15,30 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Name name;
+    private String companyName;
     private ContactInformation contactInformation;
     private Address address;
     private String username;
     private String password;
+
 
     protected Customer(){}
 
     public Customer(Builder builder){
         this.id = builder.id;
         this.name = builder.name;
+        this.companyName = builder.companyName;
         this.contactInformation = builder.contactInformation;
         this.address = builder.address;
         this.username = builder.username;
         this.password = builder.password;
+
     }
 
     public static class Builder{
         private Long id;
         private Name name;
+        private String companyName;
         private ContactInformation contactInformation;
         private Address address;
         private String username;
@@ -52,6 +57,12 @@ public class Customer {
             return this;
         }
 
+        public Builder companyName(String companyName)
+        {
+            this.companyName = companyName;
+            return this;
+        }
+
         public Builder contactInformation(ContactInformation contactInformation){
             this.contactInformation = contactInformation;
             return this;
@@ -62,14 +73,12 @@ public class Customer {
             return this;
         }
 
-        public Builder username(String username)
-        {
+        public Builder username(String username){
             this.username = username;
             return this;
         }
 
-        public Builder password(String password)
-        {
+        public Builder password(String password){
             this.password = password;
             return this;
         }
@@ -77,6 +86,7 @@ public class Customer {
         public Builder copy(Customer customer){
             this.id = customer.id;
             this.name = customer.name;
+            this.companyName = customer.companyName;
             this.contactInformation = customer.contactInformation;
             this.address = customer.address;
             this.username = customer.username;
@@ -96,6 +106,8 @@ public class Customer {
     public Name getName() {
         return name;
     }
+
+    public String getCompanyName() {return companyName;}
 
     public ContactInformation getContactInformation() {
         return contactInformation;

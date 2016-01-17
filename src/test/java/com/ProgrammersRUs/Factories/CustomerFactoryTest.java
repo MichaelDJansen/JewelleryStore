@@ -17,6 +17,7 @@ public class CustomerFactoryTest {
     Customer customer;
 
     private Name name;
+    private String companyName;
     private ContactInformation contactInformation;
     private Address address;
     private String username;
@@ -35,7 +36,7 @@ public class CustomerFactoryTest {
     @Test
     public void testCreation() throws Exception
     {
-        customer = CustomerFactory.createCustomer(name,contactInformation,address, username, password);
+        customer = CustomerFactory.createCustomer(name,companyName,contactInformation,address, username, password);
 
         Assert.assertNotNull(customer);
         Assert.assertEquals("0735589465",customer.getContactInformation().getCellphone());

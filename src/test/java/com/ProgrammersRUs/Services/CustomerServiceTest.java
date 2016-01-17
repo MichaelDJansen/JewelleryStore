@@ -39,6 +39,7 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
     List<Customer> customers = new ArrayList<>();
 
     private Name name;
+    private String companyName;
     private ContactInformation contactInformation;
     private Address address;
     private String username;
@@ -49,12 +50,13 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
     {
 
         name = new Name.Builder("Michael","Jansen").build();
+        companyName  = "ABC Corp.";
         contactInformation = new ContactInformation.Builder("0735589465","KarryHelgen@hotmail.com").build();
         address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
         username = "Mike435";
         password = "Iam_Mike";
 
-        customer = CustomerFactory.createCustomer(name, contactInformation, address, username, password);
+        customer = CustomerFactory.createCustomer(name, companyName,contactInformation, address, username, password);
 
         Assert.assertNotNull(customer);
         Assert.assertEquals("0735589465",customer.getContactInformation().getCellphone());
@@ -89,13 +91,6 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(1, customers.size());
     }
 
-    @Test(dependsOnMethods = "create")
-    public void TestGetCustomersByCellphoneNumber() throws Exception
-    {
-        customer = service.findByCellphoneNumber("0735589465");
-
-        Assert.assertEquals("0735589465",customer.getContactInformation().getCellphone());
-    }
     @Test(dependsOnMethods = "create")
     public void TestGetCustomersBySurname() throws Exception
     {
