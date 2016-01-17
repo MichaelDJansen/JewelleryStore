@@ -1,5 +1,7 @@
 package com.ProgrammersRUs.Domain;
 
+import com.ProgrammersRUs.Hash;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,7 +41,7 @@ public class Employee {
         public Builder(Name name,String username, String password){
             this.name = name;
             this.username = username;
-            this.password = password;
+            this.password = Hash.md5(password);
         }
 
         public Builder name(Name name){
@@ -55,7 +57,7 @@ public class Employee {
 
         public Builder password(String password)
         {
-            this.password = password;
+            this.password = Hash.md5(password);
             return this;
         }
 

@@ -73,4 +73,9 @@ public class Name {
     public String getSurname() {
         return surname;
     }
+
+    @Override
+    public String toString(){
+       return String.format("%s %s",firstName,surname);
+    }
 }

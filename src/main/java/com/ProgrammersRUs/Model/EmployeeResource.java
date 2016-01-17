@@ -19,7 +19,7 @@ public class EmployeeResource extends ResourceSupport {
     public EmployeeResource(Builder builder){
         this.name = builder.name;
         this.username = builder.username;
-        this.password = builder.password;;
+        this.password = builder.password;
     }
 
     public static class Builder{
@@ -31,7 +31,7 @@ public class EmployeeResource extends ResourceSupport {
 
         public Builder(){}
 
-        public Builder(Name name,Address address,float salary){
+        public Builder(Name name,String username,String password){
             this.name = name;
             this.username = username;
             this.password = password;
