@@ -15,6 +15,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String imageURL;
     private String description;
     private double price;
     private int quantity_on_hand;

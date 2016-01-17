@@ -1,6 +1,6 @@
 package com.ProgrammersRUs.Services;
 
-import com.ProgrammersRUs.Domain.Order;
+import com.ProgrammersRUs.Domain.Orders;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import java.util.List;
  */
 public interface OrderService {
 
-    List<Order> getOrders();
+    List<Orders> getOrders();
 
-    Order getOrder(Long id);
+    Orders getOrder(Long id);
 
-    List<Order> getCustomerOrders(Long id);
+    List<Orders> getCustomerOrders(Long id);
 
 }

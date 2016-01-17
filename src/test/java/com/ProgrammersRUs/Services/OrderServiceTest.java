@@ -1,7 +1,7 @@
 package com.ProgrammersRUs.Services;
 
 import com.ProgrammersRUs.App;
-import com.ProgrammersRUs.Domain.Order;
+import com.ProgrammersRUs.Domain.Orders;
 import com.ProgrammersRUs.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -31,53 +31,53 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests {
     @Autowired
     private OrderRepository repository;
 
-    Order order;
+    Orders orders;
 
-    List<Order> orders = new ArrayList<>();
+    List<Orders> ordersList = new ArrayList<>();
 
     private Long customerId;
-    private Date orderDate;
+    private String orderDate;
 
     @Test
     public void create() throws Exception
     {
 
         customerId = 553l;
-        orderDate = new Date(2015,12,11);
+        orderDate = "2015,12,11";
 
-        order = new Order.Builder(customerId,orderDate).build();
+        orders = new Orders.Builder(customerId,orderDate).build();
 
-        Assert.assertNotNull(order);
-        Assert.assertEquals(customerId,order.getCustomerId());
+        Assert.assertNotNull(orders);
+        Assert.assertEquals(customerId, orders.getCustomerId());
 
-        repository.save(order);
-        id = order.getId();
+        repository.save(orders);
+        id = orders.getId();
 
-        Assert.assertEquals(id, order.getId());
+        Assert.assertEquals(id, orders.getId());
     }
 
     @Test(dependsOnMethods = "create")
     public void testGetOrders() throws Exception
     {
-        orders = service.getOrders();
+        ordersList = service.getOrders();
 
-        Assert.assertEquals(1, orders.size());
+        Assert.assertEquals(1, ordersList.size());
     }
 
     @Test(dependsOnMethods = "create")
     public void testGetOrder() throws Exception
     {
-        order = service.getOrder(id);
+        orders = service.getOrder(id);
 
-        Assert.assertEquals(id, order.getId());
+        Assert.assertEquals(id, orders.getId());
     }
 
     @Test(dependsOnMethods = "create")
     public void testGetCustomerOrders() throws Exception
     {
-        orders = service.getCustomerOrders(customerId);
+        ordersList = service.getCustomerOrders(customerId);
 
-        Assert.assertEquals(1, orders.size());
+        Assert.assertEquals(1, ordersList.size());
     }
 
     @AfterClass

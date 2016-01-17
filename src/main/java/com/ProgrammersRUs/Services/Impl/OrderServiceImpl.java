@@ -1,6 +1,6 @@
 package com.ProgrammersRUs.Services.Impl;
 
-import com.ProgrammersRUs.Domain.Order;
+import com.ProgrammersRUs.Domain.Orders;
 import com.ProgrammersRUs.Repositories.OrderRepository;
 import com.ProgrammersRUs.Services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ public class OrderServiceImpl implements OrderService {
     OrderRepository repository;
 
 
-    public List<Order> getOrders(){
+    public List<Orders> getOrders(){
 
-        List<Order> allOrders = new ArrayList<Order>();
+        List<Orders> allOrders = new ArrayList<Orders>();
 
-        Iterable<Order> orders = repository.findAll();
-        for(Order order: orders)
+        Iterable<Orders> orders = repository.findAll();
+        for(Orders order: orders)
         {
             allOrders.add(order);
         }
@@ -34,24 +34,24 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
-    public Order getOrder(Long id){
+    public Orders getOrder(Long id){
 
-        Order order = repository.findOne(id);
+        Orders orders = repository.findOne(id);
 
-        return order;
+        return orders;
 
     }
 
-    public List<Order> getCustomerOrders(Long id){
+    public List<Orders> getCustomerOrders(Long id){
 
-        List<Order> matchedOrders = new ArrayList<Order>();
+        List<Orders> matchedOrders = new ArrayList<Orders>();
 
-        Iterable<Order> allOrders = repository.findAll();
-        for(Order order: allOrders)
+        Iterable<Orders> allOrders = repository.findAll();
+        for(Orders orders : allOrders)
         {
-            if(order.getCustomerId().equals(id) )
+            if(orders.getCustomerId().equals(id) )
             {
-                matchedOrders.add(order);
+                matchedOrders.add(orders);
             }
         }
 

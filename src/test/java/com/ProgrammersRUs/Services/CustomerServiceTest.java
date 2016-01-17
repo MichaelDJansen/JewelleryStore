@@ -41,7 +41,7 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
     private Name name;
     private String companyName;
     private ContactInformation contactInformation;
-    private Address address;
+    private String address;
     private String username;
     private String password;
 
@@ -52,7 +52,7 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
         name = new Name.Builder("Michael","Jansen").build();
         companyName  = "ABC Corp.";
         contactInformation = new ContactInformation.Builder("0735589465","KarryHelgen@hotmail.com").build();
-        address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
+        address = "55 March Street Cape Town Western Cape 8001";
         username = "Mike435";
         password = "Iam_Mike";
 
@@ -83,13 +83,13 @@ public class CustomerServiceTest extends AbstractTestNGSpringContextTests {
     }
 
 
-    @Test(dependsOnMethods = "create")
+    /*@Test(dependsOnMethods = "create")
     public void TestGetCustomersInSameProvince() throws Exception
     {
         customers = service.customersInSameProvince("Western Cape");
 
         Assert.assertEquals(1, customers.size());
-    }
+    }*/
 
     @Test(dependsOnMethods = "create")
     public void TestGetCustomersBySurname() throws Exception

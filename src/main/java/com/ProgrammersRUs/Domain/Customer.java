@@ -17,7 +17,7 @@ public class Customer {
     private Name name;
     private String companyName;
     private ContactInformation contactInformation;
-    private Address address;
+    private String address;
     private String username;
     private String password;
 
@@ -40,7 +40,7 @@ public class Customer {
         private Name name;
         private String companyName;
         private ContactInformation contactInformation;
-        private Address address;
+        private String address;
         private String username;
         private String password;
 
@@ -68,7 +68,7 @@ public class Customer {
             return this;
         }
 
-        public Builder address(Address address){
+        public Builder address(String address){
             this.address = address;
             return this;
         }
@@ -113,7 +113,7 @@ public class Customer {
         return contactInformation;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 

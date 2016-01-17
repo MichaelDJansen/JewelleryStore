@@ -42,6 +42,21 @@ public class SupplierServiceImpl implements SupplierService {
 
     }
 
+    public Supplier createSupplier(Supplier supplier)
+    {
+        return repository.save(supplier);
+    }
+
+    public Supplier editSupplier(Supplier supplier)
+    {
+        return repository.save(supplier);
+    }
+
+    public void deleteSupplier(Supplier supplier)
+    {
+        repository.delete(supplier);
+    }
+
     public List<Supplier> getSuppliersByType(String type){
 
         List<Supplier> matchedSuppliers = new ArrayList<Supplier>();

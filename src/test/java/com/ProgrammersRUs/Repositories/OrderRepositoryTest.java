@@ -1,11 +1,7 @@
 package com.ProgrammersRUs.Repositories;
 
 import com.ProgrammersRUs.App;
-import com.ProgrammersRUs.Domain.Address;
-import com.ProgrammersRUs.Domain.ContactInformation;
-import com.ProgrammersRUs.Domain.Name;
-import com.ProgrammersRUs.Domain.Order;
-import com.ProgrammersRUs.Factories.OrderFactory;
+import com.ProgrammersRUs.Domain.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -29,56 +25,56 @@ public class OrderRepositoryTest extends AbstractTestNGSpringContextTests{
     @Autowired
     private OrderRepository repository;
 
-    Order order;
+    Orders orders;
 
     private Long customerId;
-    private Date orderDate;
+    private String orderDate;
 
     @Test
     public void create() throws Exception
     {
 
         customerId = 553l;
-        orderDate = new Date(2015,12,11);
+        orderDate = "2015,12,11";
 
-        order = new Order.Builder(customerId,orderDate).build();
+        orders = new Orders.Builder(customerId,orderDate).build();
 
-        Assert.assertNotNull(order);
-        Assert.assertEquals(customerId,order.getCustomerId());
+        Assert.assertNotNull(orders);
+        Assert.assertEquals(customerId, orders.getCustomerId());
 
-        repository.save(order);
-        id = order.getId();
+        repository.save(orders);
+        id = orders.getId();
 
-        Assert.assertEquals(id, order.getId());
+        Assert.assertEquals(id, orders.getId());
     }
 
     @Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
-        order = repository.findOne(id);
+        orders = repository.findOne(id);
 
-        Assert.assertEquals(id, order.getId());
+        Assert.assertEquals(id, orders.getId());
     }
 
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Order newOrder = new Order.Builder(336l,orderDate).build();
+        Orders newOrder = new Orders.Builder(336l,orderDate).build();
 
         repository.save(newOrder);
         id = newOrder.getId();
-        Order updatedOrder = repository.findOne(id);
+        Orders updatedOrders = repository.findOne(id);
 
-        Assert.assertEquals(id, updatedOrder.getId());
+        Assert.assertEquals(id, updatedOrders.getId());
     }
 
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
-        order = repository.findOne(id);
-        repository.delete(order);
-        order = repository.findOne(id);
-        Assert.assertNull(order);
+        orders = repository.findOne(id);
+        repository.delete(orders);
+        orders = repository.findOne(id);
+        Assert.assertNull(orders);
     }
 
     @AfterClass

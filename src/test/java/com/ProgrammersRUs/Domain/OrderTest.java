@@ -11,22 +11,22 @@ import java.util.Date;
  */
 public class OrderTest {
 
-    Order order;
+    Orders orders;
 
     private Long customerId;
-    private Date orderDate;
+    private String orderDate;
 
     @Before
     public void setUp() throws Exception
     {
         customerId = 553l;
-        orderDate = new Date(2015,12,11);
+        orderDate = "2015,12,11";
     }
 
     @Test
     public void testCreation() throws Exception
     {
-        order = new Order.Builder(customerId,orderDate).build();
+        orders = new Orders.Builder(customerId,orderDate).build();
     }
 
     @After

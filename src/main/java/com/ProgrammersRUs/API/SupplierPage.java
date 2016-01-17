@@ -1,15 +1,14 @@
 package com.ProgrammersRUs.API;
 
 import com.ProgrammersRUs.Domain.Supplier;
-import com.ProgrammersRUs.Model.SupplierResource;
 import com.ProgrammersRUs.Services.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Link;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,138 +24,66 @@ public class SupplierPage {
     @Autowired
     SupplierService service;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String Index()
-    {
-        return "View Suppliers";
-    }
-
-    //Get Suppliers
     @RequestMapping(value = "/all/", method = RequestMethod.GET)
-    public List<SupplierResource> getSuppliers()
+    public ResponseEntity<List<Supplier>> getSuppliers()
     {
-        List<SupplierResource> hateoas = new ArrayList<SupplierResource>();
-        List<Supplier> suppliers = service.getSuppliers();
 
-        for(Supplier supplier: suppliers)
+        List<Supplier> supplierList= service.getSuppliers();
+
+        if(supplierList.isEmpty())
         {
-            SupplierResource res = new SupplierResource.Builder(
-                    supplier.getSupplierName()
-                    ,supplier.getItemId()
-                    ,supplier.getType())
-                    .id(supplier.getId())
-                    .build();
-
-            Link suppliersLink = new
-                    Link("http://localhost:8080/supplier/all")
-                    .withRel("supplier");
-
-            res.add(suppliersLink);
-            hateoas.add(res);
+            return new ResponseEntity<List<Supplier>>(HttpStatus.NOT_FOUND);
         }
 
-        return hateoas;
+        return new ResponseEntity<List<Supplier>>(supplierList, HttpStatus.OK);
     }
 
-    //GetSupplier
-    @RequestMapping(value = "getSuppier/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SupplierResource getSupplier(@PathVariable("id") Long id) {
-        SupplierResource hateoas;
-        Supplier supplier = service.getSupplier(id);
-
-        SupplierResource res = new SupplierResource.Builder(
-                supplier.getSupplierName()
-                ,supplier.getItemId()
-                ,supplier.getType())
-                .id(supplier.getId())
-                .build();
-
-
-        Link suppliersLink = new
-                Link("http://localhost:8080/supplier/" + id.toString())
-                .withRel("supplier");
-
-        res.add(suppliersLink);
-        hateoas = res;
-
-
-        return hateoas;
-    }
-
-    //GetSuppliersByType
-    @RequestMapping(value = "/type/{type}", method = RequestMethod.GET)
-    public List<SupplierResource> getSuppliers(@PathVariable("type")String type)
-    {
-        List<SupplierResource> hateoas = new ArrayList<SupplierResource>();
-        List<Supplier> suppliers = service.getSuppliersByType(type);
-
-        for(Supplier supplier: suppliers)
-        {
-            SupplierResource res = new SupplierResource.Builder(
-                    supplier.getSupplierName()
-                    ,supplier.getItemId()
-                    ,supplier.getType())
-                    .id(supplier.getId())
-                    .build();
-
-            Link suppliersLink = new
-                    Link("http://localhost:8080/supplier/type/" + type)
-                    .withRel("supplier");
-
-            res.add(suppliersLink);
-            hateoas.add(res);
-        }
-
-        return hateoas;
-    }
-
-    //GetSupplier
-    @RequestMapping(value = "name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SupplierResource findSupplierByName(@PathVariable("name") String name) {
-        SupplierResource hateoas;
-        Supplier supplier = service.findSupplierByName(name);
-
-        SupplierResource res = new SupplierResource.Builder(
-                supplier.getSupplierName()
-                ,supplier.getItemId()
-                ,supplier.getType())
-                .id(supplier.getId())
-                .build();
-
-
-        Link suppliersLink = new
-                Link("http://localhost:8080/supplier/name/" + name)
-                .withRel("supplier");
-
-        res.add(suppliersLink);
-        hateoas = res;
-
-
-        return hateoas;
-    }
-
-    //GetSupplier
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SupplierResource getItemSupplier(@PathVariable("id") Long id) {
-        SupplierResource hateoas;
+    public ResponseEntity<Supplier> getSupplier(@PathVariable("id") Long id) {
+
         Supplier supplier = service.getSupplier(id);
 
-        SupplierResource res = new SupplierResource.Builder(
-                supplier.getSupplierName()
-                ,supplier.getItemId()
-                ,supplier.getType())
-                .id(supplier.getId())
-                .build();
+        if(supplier == null)
+        {
+            return new ResponseEntity<Supplier>(HttpStatus.NOT_FOUND);
+        }
 
-
-        Link suppliersLink = new
-                Link("http://localhost:8080/supplier/itemId/" + id.toString())
-                .withRel("supplier");
-
-        res.add(suppliersLink);
-        hateoas = res;
-
-
-        return hateoas;
+        return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);
     }
+
+    @RequestMapping(value="/create", method = RequestMethod.POST)
+    public ResponseEntity<Void> createSupplier(@RequestBody Supplier supplier, UriComponentsBuilder ucBuilder)
+    {
+        service.createSupplier(supplier);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/all").buildAndExpand(supplier.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+
+    }
+
+    @RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Supplier> updateSupplier(@PathVariable("id") long id, @RequestBody Supplier supplier) {
+
+        if (supplier ==null) {
+
+            return new ResponseEntity<Supplier>(HttpStatus.NOT_FOUND);
+        }
+        service.editSupplier(supplier);
+        return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Supplier> deleteSupplier(@PathVariable("id") long id) {
+
+        Supplier supplier1 = service.getSupplier(id);
+
+        if (supplier1 == null) {
+            return new ResponseEntity<Supplier>(HttpStatus.NOT_FOUND);
+        }
+
+        service.deleteSupplier(supplier1);
+        return new ResponseEntity<Supplier>(HttpStatus.OK);
+    }
+
 }

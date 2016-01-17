@@ -27,7 +27,7 @@ public class CustomerTest {
     @Test
     public void testCreation() throws Exception
     {
-        customer = new Customer.Builder(name,contactInformation).address(address).build();
+        customer = new Customer.Builder(name,contactInformation).build();
 
         Assert.assertNotNull(customer);
         Assert.assertEquals("0735589465",customer.getContactInformation().getCellphone());

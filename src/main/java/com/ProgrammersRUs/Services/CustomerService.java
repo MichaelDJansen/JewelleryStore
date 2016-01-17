@@ -19,7 +19,7 @@ public interface CustomerService {
 
     public void deleteCustomer(Customer customer);
 
-    public List<Customer> customersInSameProvince(String province);
+    /*public List<Customer> customersInSameProvince(String province);*/
 
     public List<Customer> findBySurname(String surname);
 

@@ -19,7 +19,7 @@ public class CustomerFactoryTest {
     private Name name;
     private String companyName;
     private ContactInformation contactInformation;
-    private Address address;
+    private String address;
     private String username;
     private String password;
 
@@ -28,7 +28,7 @@ public class CustomerFactoryTest {
     {
         name = new Name.Builder("Michael","Jansen").build();
         contactInformation = new ContactInformation.Builder("0735589465","KarryHelgen@hotmail.com").build();
-        address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
+        address = "55 March Street Cape Town Western Cape 8001";
         username = "Mike435";
         password = "Iam_Michael";
     }

@@ -13,6 +13,12 @@ public interface SupplierService {
 
     Supplier getSupplier(Long id);
 
+    public Supplier createSupplier(Supplier supplier);
+
+    public Supplier editSupplier(Supplier supplier);
+
+    public void deleteSupplier(Supplier supplier);
+
     List<Supplier> getSuppliersByType(String type);
 
     Supplier findSupplierByName(String name);

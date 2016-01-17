@@ -1,6 +1,6 @@
 package com.ProgrammersRUs.Factories;
 
-import com.ProgrammersRUs.Domain.Order;
+import com.ProgrammersRUs.Domain.Orders;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,25 +13,25 @@ import java.util.Date;
  */
 public class OrderFactoryTest {
 
-    Order order;
+    Orders orders;
 
     private Long customerId;
-    private Date orderDate;
+    private String orderDate;
 
     @Before
     public void setUp() throws Exception
     {
         customerId = 553l;
-        orderDate = new Date(2015,12,11);
+        orderDate = "2015,12,11";
     }
 
     @Test
     public void testCreation() throws Exception
     {
-        order = new Order.Builder(customerId,orderDate).build();
+        orders = new Orders.Builder(customerId,orderDate).build();
 
-        Assert.assertNotNull(order);
-        Assert.assertEquals(customerId,order.getCustomerId());
+        Assert.assertNotNull(orders);
+        Assert.assertEquals(customerId, orders.getCustomerId());
 
     }
 

@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
         repository.delete(customer);
     }
 
-    @Override
+    /*@Override
     public List<Customer> customersInSameProvince(String province){
 
         List<Customer> matchedCustomers = new ArrayList<Customer>();
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         return matchedCustomers;
-    }
+    }*/
 
     @Override
     public List<Customer> findBySurname(String surname){

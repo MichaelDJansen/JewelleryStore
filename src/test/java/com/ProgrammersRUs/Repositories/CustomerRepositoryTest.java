@@ -32,7 +32,7 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
     private Name name;
     private String companyName;
     private ContactInformation contactInformation;
-    private Address address;
+    private String address;
     private String username;
     private String password;
 
@@ -43,7 +43,7 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
         name = new Name.Builder("Michael","Jansen").build();
         companyName = "ABC Corp.";
         contactInformation = new ContactInformation.Builder("0735589465","KarryHelgen@hotmail.com").build();
-        address = new Address.Builder("55","March Street","Cape Town","Western Cape","8001").build();
+        address = "55 March Street Cape Town Western Cape 8001";
         username = "Mike435";
         password = "Iam_Mike";
 
@@ -69,7 +69,7 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        address = new Address.Builder("53","March Street","Cape Town","Western Cape","8001").build();
+        address = "55 March Street Cape Town Western Cape 8001";
 
         Customer newCustomer = CustomerFactory.createCustomer(name, companyName, contactInformation, address, username, password);
 

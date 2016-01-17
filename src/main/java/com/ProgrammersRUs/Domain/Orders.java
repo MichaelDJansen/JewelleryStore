@@ -8,17 +8,17 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long customerId;
-    private Date orderDate;
+    private String orderDate;
 
-    protected Order(){}
+    protected Orders(){}
 
-    public Order(Builder builder){
+    public Orders(Builder builder){
         this.id = builder.id;
         this.customerId = builder.customerId;
         this.orderDate = builder.orderDate;
@@ -28,11 +28,11 @@ public class Order {
 
         private Long id;
         private Long customerId;
-        private Date orderDate;
+        private String orderDate;
 
         public Builder(){}
 
-        public Builder(Long customerId,Date orderDate){
+        public Builder(Long customerId,String orderDate){
             this.customerId = customerId;
             this.orderDate = orderDate;
         }
@@ -42,21 +42,21 @@ public class Order {
             return this;
         }
 
-        public Builder orderDate(Date orderDate){
+        public Builder orderDate(String orderDate){
             this.orderDate = orderDate;
             return this;
         }
 
 
-        public Builder copy(Order order){
-            this.id = order.id;
-            this.customerId = order.customerId;
-            this.orderDate = order.orderDate;
+        public Builder copy(Orders orders){
+            this.id = orders.id;
+            this.customerId = orders.customerId;
+            this.orderDate = orders.orderDate;
             return this;
         }
 
-        public Order build(){
-            return new Order(this);
+        public Orders build(){
+            return new Orders(this);
         }
     }
 
@@ -69,7 +69,7 @@ public class Order {
         return customerId;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 }
