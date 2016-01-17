@@ -3,6 +3,7 @@ package com.ProgrammersRUs.Factories;
 import com.ProgrammersRUs.Domain.Address;
 import com.ProgrammersRUs.Domain.Employee;
 import com.ProgrammersRUs.Domain.Name;
+import com.ProgrammersRUs.Hash;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -33,7 +34,7 @@ public class EmployeeFactoryTest {
         employee = new Employee.Builder(name,username, password).build();
 
         Assert.assertNotNull(employee);
-        Assert.assertEquals(password, employee.getPassword());
+        Assert.assertEquals(Hash.md5(password), employee.getPassword());
     }
 
     @After

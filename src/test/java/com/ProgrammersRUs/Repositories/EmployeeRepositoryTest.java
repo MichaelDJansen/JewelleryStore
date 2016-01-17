@@ -51,7 +51,7 @@ public class EmployeeRepositoryTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(id, employee.getId());
     }
 
-    /*@Test(dependsOnMethods = "create")
+    @Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
         employee = repository.findOne(id);
@@ -72,7 +72,7 @@ public class EmployeeRepositoryTest extends AbstractTestNGSpringContextTests {
 
         Assert.assertEquals(id, updatedEmployee.getId());
     }
-
+/*
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
@@ -81,8 +81,5 @@ public class EmployeeRepositoryTest extends AbstractTestNGSpringContextTests {
         employee = repository.findOne(id);
         Assert.assertNull(employee);
     }
-
 */
-
-
 }
