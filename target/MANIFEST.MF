@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: JewelleryStore
 Implementation-Version: 1.0-SNAPSHOT
-Built-By: yusraAdmin
+Built-By: Michael
 Implementation-Vendor-Id: com.ProgrammersRUs
 Created-By: IntelliJ IDEA
-Build-Jdk: 1.7.0_71
+Build-Jdk: 1.7.0_51
 Main-Class: ${start-class}
 

@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Jewellery Store" />
+        <module name="JewelleryStore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Jewellery Store" target="1.7" />
+      <module name="JewelleryStore" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

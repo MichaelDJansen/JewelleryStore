@@ -84,5 +84,18 @@ public class EmployeePage {
         return new ResponseEntity<Employee>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "username/{username}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Employee> getEmployeeByUsername(@PathVariable("username") String username) {
+
+        Employee employee = service.findEmployeeByUsername(username);
+
+        if(employee == null)
+        {
+            return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+
+    }
 
 }

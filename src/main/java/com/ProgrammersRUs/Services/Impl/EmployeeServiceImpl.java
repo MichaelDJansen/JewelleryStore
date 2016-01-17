@@ -56,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     {
         repository.delete(employee);
     }
+
     public List<Employee> findEmployeeBySurname(String surname){
 
         List<Employee> matchedEmployees = new ArrayList<Employee>();
@@ -70,6 +71,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         return matchedEmployees;
+
+    }
+
+    public Employee findEmployeeByUsername(String username){
+
+        Employee matchedEmployee = null;
+
+        Iterable<Employee> allEmployees = repository.findAll();
+        for(Employee employee: allEmployees)
+        {
+            if(employee.getUsername().equalsIgnoreCase(username))
+            {
+                matchedEmployee = employee;
+            }
+        }
+
+        return matchedEmployee;
 
     }
 }

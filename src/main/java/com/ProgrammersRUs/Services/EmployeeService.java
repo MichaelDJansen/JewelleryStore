@@ -21,4 +21,6 @@ public interface EmployeeService {
 
     List<Employee> findEmployeeBySurname(String surname);
 
+    Employee findEmployeeByUsername(String username);
+
 }

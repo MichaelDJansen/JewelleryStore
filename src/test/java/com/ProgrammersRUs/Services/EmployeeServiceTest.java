@@ -82,6 +82,14 @@ public class EmployeeServiceTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(1, employees.size());
     }
 
+    @Test(dependsOnMethods = "create")
+    public void testGetEmployeeByUsername() throws Exception
+    {
+        employee = service.findEmployeeByUsername("Mike101");
+
+        Assert.assertEquals(id,employee.getId());
+    }
+
    /* @AfterClass
     public void cleanUp() throws Exception
     {
